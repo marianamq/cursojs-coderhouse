@@ -1,8 +1,11 @@
+let nombreDelCliente = prompt ('Bienvenido a la estética BeautyCenter, ¿nos indicas tu nombre?');
+let diaDelTurno = prompt('Ingresa el día de la semana que quéres tu turno'); 
+let diaDeLaSemanaDisponible = 'Viernes';
+let numeroTelefonico = Number(prompt('Ingresa tu número de telf para contactarte'));
 
-alert('¡Hola! Bienvenido a Coder House');
-let cursoElegido = prompt('¿Por cuál curso querés comenzar?');
-let nombreEstudiante = prompt('Ingresa tu Nombre y Apellido');
-let dniEstudiante = Number(prompt('Ingresa tu número de DNI para la factura'));
 
-alert('¡Felicidades ' + nombreEstudiante + ', tu inscripción está completa!');
-document.write('¡Nos vemos pronto!')
+if(diaDelTurno === diaDeLaSemanaDisponible && numeroTelefonico > 10){
+    console.log("¡Listo, " + nombreDelCliente + "! Tu turno ha sido reservado");
+} else{
+    console.log("Lo sentimos, hubo un error en el ingreso de datos, intenta nuevamente");
+} 
