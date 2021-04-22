@@ -1,96 +1,71 @@
-let precios = [400, 800, 1300, 350, 600, 1000];
-let nombreProducto = ['Remeras', 'Buzos', 'Jeans', 'Polleras', 'Pants', 'Abrigos'];
+//let precios = [400, 800, 1300, 350, 600, 1000];
+//let nombreProducto = ['Remeras', 'Buzos', 'Jeans', 'Polleras', 'Pants', 'Abrigos'];
 let acumuladorCardsHome = ``;
 let totalCarrito = 0;
-let stock = [3, 4, 1, 2, 0, 3];
 let porcentajeDeDescuento = 15;
 let resultadoTotal = 0;
 let porcentajeIVA = 1.21;
 
 
-
-
-function agregarAlCarrito(precios, stock){
-    let tieneStock = validarStock(stock);
-    if (tieneStock){
-        totalCarrito = totalCarrito + precios;
-        console.log(`Se agregó un producto de $${precios} al carrito.`);
-    } else{
-        alert("Lo siento, no contamos con stock en estos momentos");
+class Articulo {
+    constructor (nombre, precio, resenia, image, stock) {
+        this.nombre = nombre
+        this.precio = precio
+        this.resenia = resenia
+        this.image = image
+        this.stock = stock
     }
-}
 
-function validarStock(stock){
-    if(stock > 0){
-        return true;
-    } else {
-        return false;
+    validarStock(){
+        if(this.stock > 0){
+            return true
+        } else {
+            return false
+        }
     }
-}
+
+    clienteNuevo(){
+        let primeraCompra = prompt ("Si sos cliente nuevo accedé al 15% OFF en tu primera compra con el siguiente código: PRIMERACOMPRA.")
+        if (primeraCompra === "PRIMERACOMPRA"){
+            alert('¡Yay! Bienvenid@ a 2ND CLOSET')
+            return true;
+        } else{
+            return false
+        } 
+    }
+} 
+
+const articuloUno = new Articulo("REMERA ZARA", 650, "Remera blanca con estampado marca Zara, como nueva. Talle: S.", "/img/remera_zara.jpg", 3);
+const articuloDos = new Articulo("SHORT ENGOMADO", 1720, "Short engomado tiro alto con botones, como nuevo. Talle: 38.", "/img/short_engomado.jpg", 2);
+const articuloTres = new Articulo("CARMPERA CORDERITO", 2100, "Campera de jean de hombre con interior de corderito, sin uso. Talle 40", "/img/campera_jean.jpg", 1);
+const articuloCuatro = new Articulo("BUZO CON COLORES", 1370, "Buzo de dama con degradado en dos colores, con detalles en las mangas. Talle único", "/img/buzo_colores.jpg", 0);
+const articuloCinco = new Articulo("REMERA LONDON", 490, "Remera nacional de dama, como nueva. Talle: M.", "/img/remera_london.jpg", 1);
+const articuloSeis = new Articulo("JEAN H&M", 1650, "Jean con roturas H&M, con detalles en el ruedo. Talle: 44.", "/img/jean_h&m.jpg", 2);
+
+const articulosDisponibles = [articuloUno, articuloDos, articuloTres, articuloCuatro, articuloCinco, articuloSeis];
 
 
-for (let i = 0; i < precios.length; i++) {
+for (let i = 0; i < articulosDisponibles.length; i++) {
     acumuladorCardsHome += `<div class="col-lg-4 col-md-6 mb-4">
     <div class="card h-100">
-      <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+      <a href="#"><img class="card-img-top" src="${articulosDisponibles[i].image}" alt=""></a>
       <div class="card-body">
         <h4 class="card-title">
-          <a href="#">${nombreProducto[i]}</a>
+          <a href="#">${articulosDisponibles[i].nombre}</a>
         </h4>
-        <h5>$${precios[i]}</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+        <h5>$${articulosDisponibles[i].precio}</h5>
+        <p class="card-text">${articulosDisponibles[i].resenia}</p>
       </div>
       <div class="card-footer">
-        <button onclick="agregarAlCarrito(${precios[i]}, ${stock[i]})">Agregar al carrito</button>
+        <button onclick="validarStock(${articulosDisponibles[i].precio}, ${articulosDisponibles[i].stock})">Agregar al carrito</button>
         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
       </div>
     </div>
   </div>`;
 }
 
+
 document.getElementById("productosCard").innerHTML = acumuladorCardsHome;
-
-function finalizarCompra(){
-    agregarIVA (totalCarrito, porcentajeIVA);
-    clienteNuevo();
-    totalDeDescuento(totalCarrito, porcentajeDeDescuento);
-}
-
-function clienteNuevo(){
-    let primeraCompra = prompt ("Si sos cliente nuevo accedé al 15% OFF en tu primera compra con el siguiente código: PRIMERACOMPRA.")
-    if (primeraCompra === "PRIMERACOMPRA"){
-        alert('¡Yay! Bienvenid@ a 2ND CLOSET')
-        return true;
-    } else{
-        return false
-    } 
-}
-
-function totalDeDescuento(totalCarrito, porcentajeDeDescuento){
-    resultadoPorcentaje = totalCarrito * porcentajeDeDescuento / 100;
-    resultadoTotal = totalCarrito - resultadoPorcentaje;
-    console.log(`¡Descuento agregado! Tu total ahora es de ${resultadoTotal}`);
-    
-}
-
-function agregarIVA (totalCarrito, porcentajeIVA){
-    iva = totalCarrito * porcentajeIVA;
-    alert(`El total de tu compra + IVA es de ${iva}`);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
