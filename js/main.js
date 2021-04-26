@@ -1,39 +1,41 @@
 let acumuladorCardsHome = ``;
 
 class Articulo {
-  constructor (nombre, precio, resenia, image, stock) {
+  constructor (stock, nombre, precio, resenia, image) {
+    this.stock = stock
     this.nombre = nombre
     this.precio = precio
     this.resenia = resenia
     this.image = image
-    this.stock = stock
   }
 
-  stockArticulo(){
-    if(this.stock > 0){
-      return console.log("Disponibles " + this.stock + " " + this.nombre)
-    } else {
-      return console.log("Sin stock")
-    }
+  agregarArticulo(){
+    this.stock += 1
   }
 
 } 
 
 
+
 const articulosDisponibles = [];
-console.log(articulosDisponibles)
 
-articulosDisponibles.push(new Articulo("REMERA ZARA", 650, "Remera blanca con estampado marca Zara, como nueva. Talle: S.", "/img/remera_zara.jpg", 3));
-articulosDisponibles.push(new Articulo("SHORT ENGOMADO", 1720, "Short engomado tiro alto con botones, como nuevo. Talle: 38.", "/img/short_engomado.jpg", 2));
-articulosDisponibles.push(new Articulo("CARMPERA CORDERITO", 2100, "Campera de jean de hombre con interior de corderito, sin uso. Talle 40", "/img/campera_jean.jpg", 1));
-articulosDisponibles.push(new Articulo("BUZO CON COLORES", 1370, "Buzo de dama con degradado en dos colores, con detalles en las mangas. Talle único", "/img/buzo_colores.jpg", 0));
-articulosDisponibles.push(new Articulo("REMERA LONDON", 490, "Remera nacional de dama, como nueva. Talle: M.", "/img/remera_london.jpg", 1));
-articulosDisponibles.push(new Articulo("JEAN H&M", 1650, "Jean con roturas H&M, con detalles en el ruedo. Talle: 44.", "/img/jean_h&m.jpg", 2));
-
+articulosDisponibles.push(new Articulo(3, "REMERA ZARA", 650, "Remera blanca con estampado marca Zara, como nueva. Talle: S.", "/img/remera_zara.jpg"));
+articulosDisponibles.push(new Articulo(1, "SHORT ENGOMADO", 1720, "Short engomado tiro alto con botones, como nuevo. Talle: 38.", "/img/short_engomado.jpg"));
+articulosDisponibles.push(new Articulo(2, "CARMPERA CORDERITO", 2100, "Campera de jean de hombre con interior de corderito, sin uso. Talle 40", "/img/campera_jean.jpg"));
+articulosDisponibles.push(new Articulo(0, "BUZO CON COLORES", 1370, "Buzo de dama con degradado en dos colores, con detalles en las mangas. Talle único", "/img/buzo_colores.jpg"));
+articulosDisponibles.push(new Articulo(1, "REMERA LONDON", 490, "Remera nacional de dama, como nueva. Talle: M.", "/img/remera_london.jpg"));
+articulosDisponibles.push(new Articulo(3, "JEAN H&M", 1650, "Jean con roturas H&M, con detalles en el ruedo. Talle: 44.", "/img/jean_h&m.jpg"));
 
 articulosDisponibles.forEach( (articulo)=>{
-  articulo.stockArticulo()
-} )
+  articulo.agregarArticulo()
+})
+console.log(articulosDisponibles)
+
+const mayorStock = articulosDisponibles.sort( (artmayor, artmenor)=>{
+  return artmenor.stock - artmayor.stock
+})
+console.log(mayorStock)
+
 
 
 for (let i = 0; i < articulosDisponibles.length; i++) {
