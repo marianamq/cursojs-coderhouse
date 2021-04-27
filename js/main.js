@@ -1,5 +1,10 @@
 let acumuladorCardsHome = ``;
 const articulosDisponibles = [];
+let totalCarrito = 0;
+let porcentajeDeDescuento = 15;
+let resultadoTotal = 0;
+let porcentajeIVA = 1.21;
+const btn = document.getElementById('btn');
 
 class Articulo {
   constructor (stock, nombre, precio, resenia, image) {
@@ -10,10 +15,54 @@ class Articulo {
     this.image = image
   }
 
-  agregarArticulo(){
-    this.stock += 1
+  validarStock(){
+    if(this.stock > 0){
+        return true;
+    } else {
+        return false;
+    }
+  }
+
+  agregarAlCarrito(){
+    let tieneStock = validarStock(this.stock);
+    if (tieneStock){
+        totalCarrito = totalCarrito + this.precio;
+        console.log(`Se agregó un producto de $${this.precio} al carrito.`);
+    } else{
+        alert("Lo siento, no contamos con stock en estos momentos");
+    }
+    btn.addEventListener('click', this.agregarAlCarrito, true)
+  }
+
+
+  finalizarCompra(){
+    agregarIVA (totalCarrito, porcentajeIVA);
+    clienteNuevo();
+    totalDeDescuento(totalCarrito, porcentajeDeDescuento);
+  }
+
+  clienteNuevo(){
+    let primeraCompra = prompt ("Si sos cliente nuevo accedé al 15% OFF en tu primera compra con el siguiente código: PRIMERACOMPRA.")
+    if (primeraCompra === "PRIMERACOMPRA"){
+        alert('¡Yay! Bienvenid@ a 2ND CLOSET')
+        return true;
+    } else{
+        return false
+    } 
+  }
+
+  totalDeDescuento(totalCarrito, porcentajeDeDescuento){
+    resultadoPorcentaje = totalCarrito * porcentajeDeDescuento / 100;
+    resultadoTotal = totalCarrito - resultadoPorcentaje;
+    console.log(`¡Descuento agregado! Tu total ahora es de ${resultadoTotal}`);
+  }
+
+  agregarIVA (totalCarrito, porcentajeIVA){
+    iva = totalCarrito * porcentajeIVA;
+    alert(`El total de tu compra + IVA es de ${iva}`);
   }
 } 
+
 
 
 
@@ -37,7 +86,7 @@ articulosDisponibles.forEach((articulo)=>{
       <p class="card-text">${articulo.resenia}</p>
     </div>
     <div class="card-footer">
-      <button>Agregar al carrito</button>
+    <button id="btn">Agregar al Carrito</button>
       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
     </div>
   </div>
@@ -47,13 +96,14 @@ articulosDisponibles.forEach((articulo)=>{
 console.log(articulosDisponibles)
 
 
-
-
-
-
-
-
 document.getElementById("productosCard").innerHTML = acumuladorCardsHome;
+
+
+
+
+
+
+
 
 
 
