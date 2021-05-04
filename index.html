@@ -95,11 +95,21 @@
           </a>
         </div>
 
-        <div id="productosCard" class="row">
+        <select id="filtros">
+          <option value="all">TODOS</option>
+          <option value="Remeras">REMERAS</option>
+          <option value="Shorts">SHORTS</option>
+          <option value="Jeans">JEANS</option>
+          <option value="Camperas">CAMPERAS</option>
+        </select>
+
+        <button onclick="filtrar()">Filtrar</button>
+
+        <main id="productosCard">
 
         
 
-        </div>
+        </main>
         <button onclick="finalizarCompra()">Finalizar comprar</button>
         <!-- /.row -->
 
@@ -121,7 +131,7 @@
     </div>
     <!-- /.container -->
   </footer>
-
+  <script src="/js/stock.js"></script>
   <script src="/js/main.js"></script>
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
