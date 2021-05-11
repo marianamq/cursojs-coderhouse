@@ -1,47 +1,16 @@
-let acumuladorCardsHome = ``;
+
+let carrito = [];
 const articulosDisponibles = [];
-let totalCarrito = 0;
-let porcentajeDeDescuento = 15;
-let resultadoTotal = 0;
-let porcentajeIVA = 1.21;
-const contenedorProductos = document.getElementById('productosCard')
-const product = articulosDisponibles[0]
-const selectFiltro = document.getElementById('filtros')
-const carrito = []
-const contenedorCarrito = document.getElementById('carrito-contenedor')
-const precioTotalCarrito = document.getElementById('precioTotal')
-
-document.getElementById("enviarForm").addEventListener("click", clienteNuevo)
-
-function clienteNuevo(){
-  let primeraCompra = document.getElementById("cupon").value;
-  if (primeraCompra === 00202104){
-    alert = ("¡Bienvenidx a 2NDO CLOTHES")
-  } else{
-    alert = ("Lo sentimos, el cupon que ingresó es inválido")
-  }
-  
-}
-
-  
-function  finalizarCompra(){
-  agregarIVA (totalCarrito, porcentajeIVA);
-  clienteNuevo();
-  totalDeDescuento(totalCarrito, porcentajeDeDescuento);
-}
-
-
-function totalDeDescuento(totalCarrito, porcentajeDeDescuento){
-  resultadoPorcentaje = totalCarrito * porcentajeDeDescuento / 100;
-  resultadoTotal = totalCarrito - resultadoPorcentaje;
-  console.log(`¡Descuento agregado! Tu total ahora es de ${resultadoTotal}`);
-}
+const contenedorProductos = document.getElementById('productosCard');
+const product = articulosDisponibles[0];
+const selectFiltro = document.getElementById('filtros');
+const contenedorCarrito = document.getElementById('carrito-contenedor');
+const precioTotalCarrito = document.getElementById('precioTotal');
+let carritoEnStorage = JSON.parse( localStorage.getItem('carrito') );
 
 
 
-
-
- function mostrarArticulos(array){
+function mostrarArticulos(array){
 
     contenedorProductos.innerHTML = ''
 
@@ -65,8 +34,11 @@ function totalDeDescuento(totalCarrito, porcentajeDeDescuento){
      </div>`
    
      contenedorProductos.appendChild(div)
+     
     })
 }
+
+
  
 
 function filtrar(){
@@ -83,10 +55,21 @@ function filtrar(){
 function agregarAlCarrito(id){
   let articuloElegido = stockActual.find(ele => ele.id == id)
   carrito.push(articuloElegido)
-  console.log(carrito)
 
   actualizarCarrito()
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  console.log(localStorage.carrito)
 }
+
+if (carritoEnStorage){
+  let btnCompraLleno = document.getElementsByClassName('modal-active-dos');
+  if(btnCompraLleno){
+   carrito = carritoEnStorage;
+  } else{
+    localStorage.removeItem('carrito');
+  }
+}
+
 
 function eliminarArticulo(id){
   let productoEliminado = carrito.find(ele => ele.id == id)

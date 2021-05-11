@@ -11,10 +11,11 @@
     visibility: hidden;
 }
 
-.modal-active {
+.modal-active, .modal-active-dos {
     opacity: 1;
     visibility: visible;
 }
+
 
 .modal-carrito {
     position: relative;

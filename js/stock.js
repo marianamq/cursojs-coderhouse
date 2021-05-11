@@ -17,3 +17,11 @@ let stockActual = [
 
 ]
 
+
+
+let colaboradores = [
+    {nombre: "Juana Martinez", edad: 18, descripcion: "Entré a 2NDO HAND porque quería mostrar las consecuencias de la FAST FASHION"},
+    {nombre: "Martinez Rodriguez", edad: 22, descripcion: "Entré a 2NDO HAND porque quería mostrar las consecuencias de la FAST FASHION"},
+    {nombre: "Ana Velazco", edad: 29, descripcion: "Entré a 2NDO HAND porque quería mostrar las consecuencias de la FAST FASHION"},
+    {nombre: "Rodrigo Guzman", edad: 24, descripcion: "Entré a 2NDO HAND porque quería mostrar las consecuencias de la FAST FASHION"}
+]
