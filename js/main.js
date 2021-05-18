@@ -3,11 +3,10 @@ let carrito = [];
 const articulosDisponibles = [];
 const contenedorProductos = document.getElementById('productosCard');
 const product = articulosDisponibles[0];
-const selectFiltro = document.getElementById('filtros');
 const contenedorCarrito = document.getElementById('carrito-contenedor');
 const precioTotalCarrito = document.getElementById('precioTotal');
 let carritoEnStorage = JSON.parse( localStorage.getItem('carrito') );
-
+const div = document.createElement('div')
 
 
 function mostrarArticulos(array){
@@ -39,18 +38,10 @@ function mostrarArticulos(array){
 }
 
 
- 
 
-function filtrar(){
-  let valorFiltro = selectFiltro.value 
-
-  if(valorFiltro == 'all'){
-    mostrarArticulos(stockActual)
-  } else{
-    mostrarArticulos(stockActual.filter( ele => ele.articulo === selectFiltro.value ))
-  }
+//function filtrar(){
   
-}
+//}
 
 function agregarAlCarrito(id){
   let articuloElegido = stockActual.find(ele => ele.id == id)
@@ -83,7 +74,7 @@ function actualizarCarrito(){
   contenedorCarrito.innerHTML = ''
 
   carrito.forEach( (art) => {
-    const div = document.createElement('div')
+    
 
     div.classList.add('productoEnCarrito')
     div.innerHTML = `
@@ -98,17 +89,21 @@ function actualizarCarrito(){
 }
 
 
+//selectFiltro.addEventListener('change', filtrar)
 
+console.log('stockActual', stockActual);
+$('#filtros').change(function(){
+  let valoresFiltro = $('#filtros').val()
 
-
-selectFiltro.addEventListener('change', filtrar)
-
-
-
-
-
-
-
+  if (valoresFiltro == 'all'){
+   mostrarArticulos(stockActual)
+  }else{
+    const result = stockActual.filter( ele =>{
+     return ele.articulo.toString().toLowerCase() == valoresFiltro.toString().toLowerCase() 
+    })
+    return mostrarArticulos(result)
+  }
+})
 
 
 

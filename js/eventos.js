@@ -5,7 +5,7 @@ const modalDeCarrito = document.getElementsByClassName('modal-carrito')[0]
 const continuarCompra = document.getElementById('continuarCompra')
 
 btnFinalizarCompra.addEventListener('click', () => {
-    contenedorModal.classList.toggle('modal-active')
+   contenedorModal.classList.toggle('modal-active')
 })
 btnCerrar.addEventListener('click', () => {
     contenedorModal.classList.toggle('modal-active')
