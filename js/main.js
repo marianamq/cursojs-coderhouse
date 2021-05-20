@@ -106,6 +106,9 @@ $('#filtros').change(function(){
 })
 
 
+$('#titulo').css("color","#ff9933")
+.fadeOut(1000)
+.fadeIn(2000)
 
 
 

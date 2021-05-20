@@ -1,3 +1,5 @@
+
+
 .modal-contenedor {
     position: fixed;
     top: 0;
@@ -15,6 +17,7 @@
     opacity: 1;
     visibility: visible;
 }
+
 
 
 .modal-carrito {
@@ -62,3 +65,4 @@
 .boton-eliminar:hover {
     cursor: pointer;
 }
+
