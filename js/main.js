@@ -7,41 +7,41 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 const precioTotalCarrito = document.getElementById('precioTotal');
 let carritoEnStorage = JSON.parse( localStorage.getItem('carrito') );
 const div = document.createElement('div')
+const URLJSON = "/stock.json"
 
-
-function mostrarArticulos(array){
-
-    contenedorProductos.innerHTML = ''
-
-    array.forEach( (articulo) => {
-     const div = document.createElement('div')
-     div.classList.add('product')
-     div.innerHTML = `
-     <div class="card">
-       <a href="#"><img class="card-img-top" src="${articulo.image}" alt=""></a>
-       <div class="card-body">
-         <h4 class="card-title">
-           <a href="#">${articulo.nombre}</a>
-         </h4>
-         <h5>$${articulo.precio}</h5>
-         <p class="card-text">${articulo.descrip}</p>
-       </div>
-       <div class="card-footer">
-       <button onclick=agregarAlCarrito(${articulo.id})>Agregar al Carrito</button>
-         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-       </div>
-     </div>`
-   
-     contenedorProductos.appendChild(div)
+function traerCards(){
+  $.get(URLJSON, 
+  function(respuesta, estado) {
+    if(estado === "success"){
+      let misDatos = respuesta;
+      for (const dato of misDatos){
+        const div = document.createElement('div')
+        div.classList.add('product')
+        div.innerHTML = `
+        <div class="card">
+          <a href="#"><img class="card-img-top" src="${dato.image}" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">${dato.nombre}</a>
+            </h4>
+            <h5>$${dato.precio}</h5>
+            <p class="card-text">${dato.descrip}</p>
+          </div>
+          <div class="card-footer">
+          <button onclick=agregarAlCarrito(${dato.id})>Agregar al Carrito</button>
+            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+          </div>
+        </div>`
+      
+        contenedorProductos.appendChild(div)
+        
+      }
      
-    })
+    }
+    
+  })
 }
 
-
-
-//function filtrar(){
-  
-//}
 
 function agregarAlCarrito(id){
   let articuloElegido = stockActual.find(ele => ele.id == id)
@@ -91,7 +91,6 @@ function actualizarCarrito(){
 
 //selectFiltro.addEventListener('change', filtrar)
 
-console.log('stockActual', stockActual);
 $('#filtros').change(function(){
   let valoresFiltro = $('#filtros').val()
 
@@ -99,11 +98,14 @@ $('#filtros').change(function(){
    mostrarArticulos(stockActual)
   }else{
     const result = stockActual.filter( ele =>{
-     return ele.articulo.toString().toLowerCase() == valoresFiltro.toString().toLowerCase() 
+     ele.articulo.toString().toLowerCase() == valoresFiltro.toString().toLowerCase() 
     })
     return mostrarArticulos(result)
   }
 })
+
+
+
 
 
 $('#titulo').css("color","#ff9933")
