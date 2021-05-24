@@ -89,22 +89,18 @@ function actualizarCarrito(){
 }
 
 
-//selectFiltro.addEventListener('change', filtrar)
-
 $('#filtros').change(function(){
   let valoresFiltro = $('#filtros').val()
 
   if (valoresFiltro == 'all'){
-   mostrarArticulos(stockActual)
+   traerCards()
   }else{
-    const result = stockActual.filter( ele =>{
+    const result = traerCards().filter( ele =>{
      ele.articulo.toString().toLowerCase() == valoresFiltro.toString().toLowerCase() 
     })
-    return mostrarArticulos(result)
+    return traerCards(result)
   }
 })
-
-
 
 
 
