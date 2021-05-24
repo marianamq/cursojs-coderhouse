@@ -18,7 +18,7 @@ function traerCards(){
         const div = document.createElement('div')
         div.classList.add('product')
         div.innerHTML = `
-        <div class="card">
+        <div class="col-md-3 card">
           <a href="#"><img class="card-img-top" src="${dato.image}" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
@@ -104,7 +104,7 @@ $('#filtros').change(function(){
 
 
 
-$('#titulo').css("color","#ff9933")
+$('#titulo').css("color","#b9b546")
 .fadeOut(1000)
 .fadeIn(2000)
 

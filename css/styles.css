@@ -1,3 +1,15 @@
+body{
+    font-family: 'Varela Round', sans-serif;
+}
+
+#titulo{
+    font-family: 'Pattaya', sans-serif;
+    font-size: 35px;
+}
+
+.navbar-dark, footer{
+    background-color: #CD803F;
+}
 
 
 .modal-contenedor {
@@ -11,6 +23,7 @@
     transition: all .5s;
     opacity: 0;
     visibility: hidden;
+    border-radius: 5%;
 }
 
 .modal-active, .modal-active-dos {
@@ -22,7 +35,7 @@
 
 .modal-carrito {
     position: relative;
-    background-color: white;
+    background-color: #c7c46b;
     min-width: 500px;
     padding: 20px;
     margin-top: -100%;
@@ -64,5 +77,25 @@
 
 .boton-eliminar:hover {
     cursor: pointer;
+}
+
+.btn{
+    height: 3rem;
+    width: auto;
+    background-color: #c7c46b;
+}
+
+.btn:hover{
+    background-color:  #e5bb9a;
+}
+
+.select{
+    height: 2rem;
+    width: auto;
+    background-color: #c7c46b;
+}
+
+.select:hover{
+    background-color: #dcdaa3;
 }
 
