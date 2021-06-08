@@ -5,40 +5,33 @@ const contenedorProductos = document.getElementById('productosCard');
 const product = articulosDisponibles[0];
 const contenedorCarrito = document.getElementById('carrito-contenedor');
 const precioTotalCarrito = document.getElementById('precioTotal');
-let carritoEnStorage = JSON.parse( localStorage.getItem('carrito') );
-const div = document.createElement('div')
-const URLJSON = "/stock.json"
 
-function traerCards(){
-  $.get(URLJSON, 
-  function(respuesta, estado) {
-    if(estado === "success"){
-      let misDatos = respuesta;
-      for (const dato of misDatos){
-        const div = document.createElement('div')
-        div.classList.add('product')
-        div.innerHTML = `
-        <div class="col-md-3 card">
-          <a href="#"><img class="card-img-top" src="${dato.image}" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">${dato.nombre}</a>
-            </h4>
-            <h5>$${dato.precio}</h5>
-            <p class="card-text">${dato.descrip}</p>
-          </div>
-          <div class="card-footer">
-          <button onclick=agregarAlCarrito(${dato.id})>Agregar al Carrito</button>
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
-        </div>`
-      
-        contenedorProductos.appendChild(div)
-        
-      }
-     
-    }
-    
+let carritoEnStorage = JSON.parse( localStorage.getItem('carrito') );
+
+
+
+function mostrarArticulos(){
+  stockActual.forEach( (articulo) => {
+   const div = document.createElement('div')
+   div.classList.add('product')
+   div.innerHTML = `
+   <div class="card">
+     <a href="#"><img class="card-img-top" src="${articulo.image}" alt=""></a>
+     <div class="card-body">
+       <h4 class="card-title">
+         <a href="#">${articulo.nombre}</a>
+       </h4>
+       <h5>$${articulo.precio}</h5>
+       <p class="card-text">${articulo.descrip}</p>
+     </div>
+     <div class="card-footer">
+     <button onclick=agregarAlCarrito(${articulo.id})>Agregar al Carrito</button>
+       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+     </div>
+   </div>`
+ 
+   contenedorProductos.appendChild(div)
+   
   })
 }
 
@@ -89,27 +82,24 @@ function actualizarCarrito(){
 }
 
 
-$('#filtros').change(function(){
-  let valoresFiltro = $('#filtros').val()
+//selectFiltro.addEventListener('change', filtrar)
 
-  if (valoresFiltro == 'all'){
-   traerCards()
-  }else{
-    const result = traerCards().filter( ele =>{
-     ele.articulo.toString().toLowerCase() == valoresFiltro.toString().toLowerCase() 
-    })
-    return traerCards(result)
-  }
-})
+// console.log('stockActual', stockActual);
+// $('#filtros').change(function(){
+//   let valoresFiltro = $('#filtros').val()
+
+//   if (valoresFiltro == 'all'){
+//    mostrarArticulos(stockActual)
+//   }else{
+//     const result = stockActual.filter( ele =>{
+//      return ele.articulo.toString().toLowerCase() == valoresFiltro.toString().toLowerCase() 
+//     })
+//     return mostrarArticulos()
+//   }
+// })
 
 
-
-$('#titulo').css("color","#b9b546")
+$('#titulo').css("color","#ff9933")
 .fadeOut(1000)
 .fadeIn(2000)
-
-
-
-
-
 

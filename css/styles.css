@@ -1,15 +1,48 @@
 body{
     font-family: 'Varela Round', sans-serif;
+    padding: 0;
 }
+
+.navbar-dark, footer{
+    background-color: #CD803F;
+}
+
+
+.logo{
+    padding: 0.4rem;
+    display: flex;
+    justify-content: space-around;
+}
+.secciones{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.secciones a{
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.seccionesHome{
+    height: 4.3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #c7c46b;
+}
+
+
+
+
+
 
 #titulo{
     font-family: 'Pattaya', sans-serif;
     font-size: 35px;
 }
 
-.navbar-dark, footer{
-    background-color: #CD803F;
-}
 
 
 .modal-contenedor {
