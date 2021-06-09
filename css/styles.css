@@ -1,47 +1,47 @@
 body{
     font-family: 'Varela Round', sans-serif;
+    /*font-family: 'Pattaya', sans-serif;*/
     padding: 0;
+    background-color: #e7e0cc;
 }
 
 .navbar-dark, footer{
-    background-color: #CD803F;
+    background-color: #F0A64F;
 }
-
 
 .logo{
     padding: 0.4rem;
     display: flex;
     justify-content: space-around;
 }
+
+
 .secciones{ 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.secciones a{
+.secciones a, .opciones a{
     margin: 10px;
     text-decoration: none;
     color: white;
 }
 
-.seccionesHome{
+.opciones{
     height: 4.3rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    background-color: #c7c46b;
+    background-color: #eebcaa;
+}
+
+.opciones img{
+    height: 3rem;
 }
 
 
 
-
-
-
-#titulo{
-    font-family: 'Pattaya', sans-serif;
-    font-size: 35px;
-}
 
 
 
@@ -115,11 +115,12 @@ body{
 .btn{
     height: 3rem;
     width: auto;
-    background-color: #c7c46b;
+    border-color: #CD803F;
 }
 
 .btn:hover{
     background-color:  #e5bb9a;
+    color: black;
 }
 
 .select{

@@ -10,31 +10,6 @@ let carritoEnStorage = JSON.parse( localStorage.getItem('carrito') );
 
 
 
-function mostrarArticulos(){
-  stockActual.forEach( (articulo) => {
-   const div = document.createElement('div')
-   div.classList.add('product')
-   div.innerHTML = `
-   <div class="card">
-     <a href="#"><img class="card-img-top" src="${articulo.image}" alt=""></a>
-     <div class="card-body">
-       <h4 class="card-title">
-         <a href="#">${articulo.nombre}</a>
-       </h4>
-       <h5>$${articulo.precio}</h5>
-       <p class="card-text">${articulo.descrip}</p>
-     </div>
-     <div class="card-footer">
-     <button onclick=agregarAlCarrito(${articulo.id})>Agregar al Carrito</button>
-       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-     </div>
-   </div>`
- 
-   contenedorProductos.appendChild(div)
-   
-  })
-}
-
 
 function agregarAlCarrito(id){
   let articuloElegido = stockActual.find(ele => ele.id == id)

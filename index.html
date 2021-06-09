@@ -39,63 +39,61 @@
   <!-- Page Content -->
 
 
-  <div class="container">
-
-    <div class="seccionesHome">
-      <div><a href="#">Obtené dinero por dejar tus prendas</a></div>
-      <div><a href="#">Métodos de envío</a></div>
-    </div>
-
-    <div class="col-lg-12">
-      <select id="filtros" class="my-5  btn select">
-        <option value="all">TODO</option>
-        <option value="remeras">REMERAS</option>
-        <option value="shorts">SHORTS</option>
-        <option value="jeans">JEANS</option>
-        <option value="camperas">CAMPERAS</option>
-      </select>
-      <button id="continuarCompra" class="btn my-5 modal-active-dos">Continuar compra</button>
-
-      <div id="productosCard">
-
+  <div class="container px-4 px-lg-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 opciones">
+        <img src="img/fashion.svg" alt="">
+        <a href="#">Obtené dinero por dejar tus prendas</a>
       </div>
-      <div class="row">
+      <div class="col-lg-6 opciones">
+        <img src="img/truck.svg" alt="">
+        <a href="#">Métodos de envío</a>
+      </div>
       </div>
 
-      
+
+      <div id="productosCard" class="row">
+  
+
+      </div>
+
       <button id="finalizarCompra" class="btn my-5">Finalizar compra</button>
-      <div class="modal-contenedor">
-        <div class="modal-carrito">
-          <h3>Carrito</h3>
-          <div id="carrito-contenedor">
-          </div>
-          <p class="precioProducto">Precio total: $<span id="precioTotal"></span></p>
-          <button id="cerrarCarrito">salir</button>
+
+
+
+    <!---Modal de carrito-->
+    <div class="modal-contenedor">
+      <div class="modal-carrito">
+        <h3>Carrito</h3>
+        <div id="carrito-contenedor">
         </div>
+        <p class="precioProducto">Precio total: $<span id="precioTotal"></span></p>
+        <button id="cerrarCarrito">salir</button>
       </div>
     </div>
 
+    <!--Newsletter-->
+    <div class="newsletter">
+  
+    </div>
+
+
+
+
   </div>
-
-  <div class="newsletter">
-
-  </div>
-
-
   <!-- /.container -->
- 
-
   <!-- Footer -->
   <footer class="footer py-5">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; 2ND CHANCES 2021</p>
+      <div>Icons made by <a href="https://www.flaticon.com/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </div>
     <!-- /.container -->
   </footer>
   <script src="jquery-3.6.0.min.js"></script>
-  <script src="/objectos.js"></script>
-  <script src="/js/eventos.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="js/objectos.js"></script>
+  <script src="js/eventos.js"></script>
+  <script src="js/main.js"></script>
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
