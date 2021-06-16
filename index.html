@@ -6,9 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Curso Js - Mariana Marquez</title>
-  <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -18,38 +16,67 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar-expand-lg navbar-dark">
-    <div class="logo">
-      <a href=""><img src="/img/logo_second-chances.png" alt=""></a>
-
-      <form class="form-inline my-1 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn my-1 my-sm-0" type="submit">Search</button>
-      </form>
+  <nav class="navbar-expand-lg navbar-dark shadow-sm">
+    <div class="nav-superior shadow-sm">
+      <div class="cont-logo">
+        <a><img src="/img/2.png" alt=""></a>
+      </div>
+      <div class="search-carrito">
+        <form class="form-inline my-1 my-md-0">
+          <input class="form-control form-control-sm mr-sm-1" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn my-1 my-sm-0" type="submit">
+            <img src="/img/search.svg" class="search" alt="">
+          </button>
+        </form>
+        <img src="/img/shopping-cart.svg" class="cart"alt="">
+        <button id="finalizarCompra">
+          0
+        </button>
+      </div>
     </div>
     <div class="secciones">
-      <a href="">Home</a>
-      <a href="">Otoño - Invierno</a>
-      <a href="">Sale Verano</a>
-      <a href="">Sucursales</a>
+      <a href="#" >Home</a>
+      <a href="#productosCard" id="temporada">Otoño - Invierno</a>
+      <a href="#productosCard" id="verano">Sale Verano</a>
     </div>
     
   </nav>
 
-  <!-- Page Content -->
-
-
   <div class="container px-4 px-lg-5">
+    <section>
+      <div class="foto">
+        <img src="/img/moda-sustentable.png" alt="">
+      </div>
+    </section>
     <div class="row justify-content-center">
       <div class="col-lg-6 opciones">
-        <img src="img/fashion.svg" alt="">
-        <a href="#">Obtené dinero por dejar tus prendas</a>
+        <a href="#">
+          <img src="img/fashion.svg" alt="icon_t-shirt">
+          Obtené dinero por dejar tus prendas
+        </a>
       </div>
       <div class="col-lg-6 opciones">
-        <img src="img/truck.svg" alt="">
-        <a href="#">Métodos de envío</a>
+        <a href="#">
+          <img src="img/truck.svg" alt="icon_truck">
+          Métodos de envío
+        </a>
       </div>
       </div>
+      <!--TODO-->
+      <select class="btn btn-select" name="" id="temporadas">
+        <option value="todo">Todo</option>
+        <option value="Otonio-invierno">Otoño - Invierno</option>
+        <option value="Atemporal"> Atemporales</option>
+        <option value="Verano">Sale Verano</option>
+      </select>
+
+      <select class="btn btn-select" name="" id="articulos">
+        <option value="todo-art">Todo</option>
+        <option value="Remera">Remeras</option>
+        <option value="Pantalon">Jeans / Pantalones</option>
+        <option value="Buzo">Buzos</option>
+        <option value="Campera">Camperas</option>
+      </select>
 
 
       <div id="productosCard" class="row">
@@ -57,43 +84,50 @@
 
       </div>
 
-      <button id="finalizarCompra" class="btn my-5">Finalizar compra</button>
 
 
 
-    <!---Modal de carrito-->
-    <div class="modal-contenedor">
-      <div class="modal-carrito">
-        <h3>Carrito</h3>
-        <div id="carrito-contenedor">
+    <div class="modal modal-contenedor" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Carrito</h5>
+            <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" id="cerrarCarrito">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="articulosCarrito">
+           
+          </div>
+          <div class="modal-footer">
+            <p class="mx-3">Total: $<span id="precioTotal"></span></p>
+            <button onclick=generarLinkCobro() type="button" class="btn btn-pagar">Pagar</button>
+          </div>
         </div>
-        <p class="precioProducto">Precio total: $<span id="precioTotal"></span></p>
-        <button id="cerrarCarrito">salir</button>
       </div>
     </div>
 
-    <!--Newsletter-->
-    <div class="newsletter">
-  
-    </div>
-
-
+    
 
 
   </div>
   <!-- /.container -->
-  <!-- Footer -->
+  
+
+
   <footer class="footer py-5">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; 2ND CHANCES 2021</p>
-      <div>Icons made by <a href="https://www.flaticon.com/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      <p class="m-0 text-center text-white">Copyright &copy; Mariana Márquez - Curso Js</p>
     </div>
-    <!-- /.container -->
   </footer>
+
+
+
   <script src="jquery-3.6.0.min.js"></script>
-  <script src="js/objectos.js"></script>
-  <script src="js/eventos.js"></script>
+  <script src="js/stock.js"></script>
+  <script src="js/stock.json"></script>
   <script src="js/main.js"></script>
+  <script src="js/eventos.js"></script>
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
